@@ -11,15 +11,17 @@ import Foundation
 struct Metronome {
     var tempo = 60
     var sound = SoundType.Click
-    var playing = false
-    var interval: Timer?
+    private(set) var playing = false
+    private var interval: Timer?
     
     mutating func play() {
         playing = true
+        print("metronome is playing")
     }
     
      mutating func stop() {
         playing = false
+        print("metronome has stopped")
     }
     
     private func click() {
