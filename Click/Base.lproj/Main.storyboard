@@ -60,6 +60,7 @@
                     <connections>
                         <outlet property="playButton" destination="EYA-sA-9nK" id="zRv-ID-Ivu"/>
                         <outlet property="tempoLabel" destination="Gg5-9e-xO3" id="Sax-ME-RK7"/>
+                        <outlet property="tempoSlider" destination="XIB-Sy-UDM" id="VWZ-Uo-bax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

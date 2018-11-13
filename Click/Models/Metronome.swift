@@ -7,25 +7,30 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Metronome {
-    var tempo = 60
-    var sound = SoundType.Click
-    private(set) var playing = false
+class Metronome: Object {
+    @objc dynamic var tempo = 60
+    @objc private dynamic var soundTypeRaw: String = SoundType.Click.rawValue
+    var soundType: SoundType {
+        get { return SoundType(rawValue: soundTypeRaw)! }
+        set { soundTypeRaw = newValue.rawValue }
+    }
+    @objc dynamic var playing = false
     private var interval: Timer?
     
-    mutating func play() {
+    func play() {
         playing = true
         print("metronome is playing")
     }
     
-     mutating func stop() {
+    func stop() {
         playing = false
         print("metronome has stopped")
     }
     
     private func click() {
-        print(sound)
+        print(soundType)
     }
 }
 
