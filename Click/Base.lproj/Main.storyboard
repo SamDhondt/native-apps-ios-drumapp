@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rSz-CN-KqO">
-                                <rect key="frame" x="37.5" y="279.5" width="300" height="128.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rSz-CN-KqO">
+                                <rect key="frame" x="37.5" y="239.5" width="300" height="208.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg5-9e-xO3">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
@@ -28,19 +28,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFP-EF-Dov">
-                                        <rect key="frame" x="0.0" y="48" width="300" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="58" width="300" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="30" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-Sy-UDM">
-                                        <rect key="frame" x="-2" y="68.5" width="304" height="31"/>
+                                        <rect key="frame" x="-2" y="88.5" width="304" height="31"/>
                                         <connections>
                                             <action selector="onSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="l38-7l-roE"/>
                                         </connections>
                                     </slider>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q5n-9n-8T2">
+                                        <rect key="frame" x="0.0" y="128.5" width="300" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                            <segment title=""/>
+                                            <segment title=""/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onSegmentOptionSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="I5V-M9-KHS"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-sA-9nK">
-                                        <rect key="frame" x="0.0" y="98.5" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="166.5" width="300" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
                                             <action selector="onPlayPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RYZ-xv-450"/>
@@ -59,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="playButton" destination="EYA-sA-9nK" id="zRv-ID-Ivu"/>
+                        <outlet property="soundControl" destination="q5n-9n-8T2" id="sx4-hC-5Hh"/>
                         <outlet property="tempoLabel" destination="Gg5-9e-xO3" id="Sax-ME-RK7"/>
                         <outlet property="tempoSlider" destination="XIB-Sy-UDM" id="VWZ-Uo-bax"/>
                     </connections>

@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tempoSlider: UISlider!
     
+    @IBOutlet weak var soundControl: UISegmentedControl!
+    
     @IBAction func onSliderChanged(_ sender: UISlider) {
         let newValue = Int(sender.value)
         try! dataManager.realm.write {
@@ -35,10 +37,36 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func onSegmentOptionSelected(_ sender: UISegmentedControl) {
+        if let option = sender.titleForSegment(at: sender.selectedSegmentIndex) {
+            if let newSoundType = SoundType(rawValue: option) {
+                try! dataManager.realm.write {
+                    dataManager.metronome.soundType = newSoundType
+                }
+            }
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup tempoLabel
         tempoLabel.text = String(dataManager.metronome.tempo)
+        
+        // setup tempoSlider
         tempoSlider.value = Float(dataManager.metronome.tempo)
+        
+        // setup soundControl (Segmented Control)
+        var index = 0
+        SoundType.allCases.forEach {
+            soundControl.setTitle($0.rawValue, forSegmentAt: index)
+            if $0 == dataManager.metronome.soundType {
+                soundControl.selectedSegmentIndex = index
+            }
+            index += 1
+        }
     }
 
 

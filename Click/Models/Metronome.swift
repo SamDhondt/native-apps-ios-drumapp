@@ -34,6 +34,6 @@ class Metronome: Object {
     }
 }
 
-enum SoundType: String {
+enum SoundType: String, CaseIterable {
     case Click, Snare, Kick, HiHat
 }
