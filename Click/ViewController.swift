@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     private let dataManager = DataManager()
+    var timer: Timer?
+    var originalMetronomeTempo = 0
     
     @IBOutlet weak var tempoLabel: UILabel!
     
@@ -30,9 +32,16 @@ class ViewController: UIViewController {
     @IBAction func onPlayPressed(_ sender: UIButton) {
         if (dataManager.metronome.playing){
             dataManager.metronome.stop()
+            timer?.invalidate()
             playButton.setTitle("Play", for: UIControl.State.normal)
         } else {
             dataManager.metronome.play()
+            originalMetronomeTempo = dataManager.metronome.tempo
+            timer = Timer.scheduledTimer(
+                timeInterval: 2,
+                target: self,
+                selector: #selector(shouldReset),
+                userInfo: nil, repeats: true)
             playButton.setTitle("Stop", for: UIControl.State.normal)
         }
     }
@@ -43,6 +52,7 @@ class ViewController: UIViewController {
             if let newSoundType = SoundType(rawValue: option) {
                 try! dataManager.realm.write {
                     dataManager.metronome.soundType = newSoundType
+                    dataManager.metronome.reset()
                 }
             }
         }
@@ -51,7 +61,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Metronome().tempo = 100
         // setup tempoLabel
         tempoLabel.text = String(dataManager.metronome.tempo)
         
@@ -66,6 +76,13 @@ class ViewController: UIViewController {
                 soundControl.selectedSegmentIndex = index
             }
             index += 1
+        }
+    }
+    
+    @objc private func shouldReset(){
+        if originalMetronomeTempo != dataManager.metronome.tempo {
+            originalMetronomeTempo = dataManager.metronome.tempo
+            dataManager.metronome.reset()
         }
     }
 

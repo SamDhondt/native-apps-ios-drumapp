@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220F1970219C51DC00882169 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 220F196F219C51DC00882169 /* Sounds */; };
 		2226568F2190B91200A8EC61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2226568E2190B91200A8EC61 /* AppDelegate.swift */; };
 		222656912190B91200A8EC61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656902190B91200A8EC61 /* ViewController.swift */; };
 		222656942190B91200A8EC61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222656922190B91200A8EC61 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1F8F7615DFE15F798D135956 /* Pods-Click.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Click.release.xcconfig"; path = "Pods/Target Support Files/Pods-Click/Pods-Click.release.xcconfig"; sourceTree = "<group>"; };
+		220F196F219C51DC00882169 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		2226568B2190B91200A8EC61 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2226568E2190B91200A8EC61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222656902190B91200A8EC61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,13 +56,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		220F196E219C422500882169 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		222656822190B91200A8EC61 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +77,7 @@
 		2226568D2190B91200A8EC61 /* Click */ = {
 			isa = PBXGroup;
 			children = (
-				220F196E219C422500882169 /* Sounds */,
+				220F196F219C51DC00882169 /* Sounds */,
 				229C36ED219AFBD700366524 /* Data */,
 				222656A02192096100A8EC61 /* Models */,
 				2226568E2190B91200A8EC61 /* AppDelegate.swift */,
@@ -195,6 +190,7 @@
 			files = (
 				222656992190B91300A8EC61 /* LaunchScreen.storyboard in Resources */,
 				222656962190B91300A8EC61 /* Assets.xcassets in Resources */,
+				220F1970219C51DC00882169 /* Sounds in Resources */,
 				222656942190B91200A8EC61 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
