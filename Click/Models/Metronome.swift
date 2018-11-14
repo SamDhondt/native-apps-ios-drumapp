@@ -12,25 +12,35 @@ import RealmSwift
 class Metronome: Object {
     @objc dynamic var tempo = 60
     @objc private dynamic var soundTypeRaw: String = SoundType.Click.rawValue
+    
+    // is persisted by soundTypeRaw
     var soundType: SoundType {
         get { return SoundType(rawValue: soundTypeRaw)! }
         set { soundTypeRaw = newValue.rawValue }
     }
-    @objc dynamic var playing = false
+    
+    // unnecessary for persistence
+    var playing = false
     private var interval: Timer?
     
     func play() {
         playing = true
         print("metronome is playing")
+        interval = Timer.scheduledTimer(
+            timeInterval: 60 / Double(tempo),
+            target: self,
+            selector: #selector(tick),
+            userInfo: nil, repeats: true)
     }
     
     func stop() {
         playing = false
+        interval?.invalidate()
         print("metronome has stopped")
     }
     
-    private func click() {
-        print(soundType)
+    @objc private func tick() {
+        print(soundType.rawValue)
     }
 }
 
