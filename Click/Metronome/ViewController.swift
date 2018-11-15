@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AudioToolbox
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, OnTickListener {
     private let dataManager = DataManager()
-    var timer: Timer?
-    var originalMetronomeTempo = 0
+    private var timer: Timer?
+    private var originalMetronomeTempo = 0
+    private var sounds: [SoundType:SystemSoundID] = [:]
     
     @IBOutlet weak var tempoLabel: UILabel!
     
@@ -61,21 +63,36 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Metronome().tempo = 100
+        
+        try! dataManager.realm.write {
+            dataManager.metronome.onTickListener = self
+        }
+        
         // setup tempoLabel
         tempoLabel.text = String(dataManager.metronome.tempo)
         
         // setup tempoSlider
         tempoSlider.value = Float(dataManager.metronome.tempo)
         
-        // setup soundControl (Segmented Control)
-        var index = 0
-        SoundType.allCases.forEach {
-            soundControl.setTitle($0.rawValue, forSegmentAt: index)
-            if $0 == dataManager.metronome.soundType {
+        
+        for index in 0..<SoundType.allCases.count {
+            // setup soundControl (Segmented Control)
+            let soundType = SoundType.allCases[index]
+            soundControl.setTitle(soundType.rawValue, forSegmentAt: index)
+            if soundType == dataManager.metronome.soundType {
                 soundControl.selectedSegmentIndex = index
             }
-            index += 1
+            
+            // setup audioservices
+            // source: https://stackoverflow.com/questions/24043904/creating-and-playing-a-sound-in-swift#25048225
+            // plays a sound using a sound file
+            if let soundURL = Bundle.main.url(
+                forResource: "Sounds/\(soundType.rawValue)",
+                withExtension: "m4a"){ // attempts to find soundfile
+                var soundID: SystemSoundID = 0
+                AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundID)
+                sounds[soundType] = soundID // stores soundID together with soundtype in dictionary for easy retrieval
+            }
         }
     }
     
@@ -84,6 +101,10 @@ class ViewController: UIViewController {
             originalMetronomeTempo = dataManager.metronome.tempo
             dataManager.metronome.reset()
         }
+    }
+    
+    func onTick() {
+    AudioServicesPlaySystemSound(sounds[dataManager.metronome.soundType]!)
     }
 
 
