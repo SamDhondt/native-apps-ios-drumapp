@@ -7,9 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Sticking {
-    let notesPerBeat: Int
-    let pattern: String
-    
-}
+//class Sticking: Object {
+//    @objc dynamic var notesPerBeat: Int = 0
+//    @objc dynamic var pattern: String = ""
+//
+//    convenience init(notesPerBeat: Int, pattern: String){
+//        self.init()
+//        self.notesPerBeat = notesPerBeat
+//        self.pattern = pattern
+//    }
+//}

@@ -7,8 +7,8 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Progress {
-    let practiceSessions: [PracticeSession] = []
-    
+class Progress: Object {
+    var practiceSessions: List<PracticeSession> = List()
 }

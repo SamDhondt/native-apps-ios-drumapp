@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Drummer {
-    let name: String
-    let metronome: Metronome
-    let progress = Progress()
-    var currentRudiment: Rudiment?
+class Drummer: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var metronome: Metronome?
+    @objc dynamic var progress: Progress?
+    @objc dynamic var currentRudiment: Rudiment?
 }

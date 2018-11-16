@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Rudiment {
-    let name: String
-    let sticking: Sticking
+class Rudiment: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var sticking: String = ""
     
-    init(rudimentName name: String, sticking: Sticking){
+    convenience init(rudimentName name: String, sticking: String){
+        self.init()
         self.name = name
         self.sticking = sticking
     }
-    
 }

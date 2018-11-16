@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		220F1970219C51DC00882169 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 220F196F219C51DC00882169 /* Sounds */; };
 		2226568F2190B91200A8EC61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2226568E2190B91200A8EC61 /* AppDelegate.swift */; };
-		222656912190B91200A8EC61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656902190B91200A8EC61 /* ViewController.swift */; };
+		222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656902190B91200A8EC61 /* MetronomeViewController.swift */; };
 		222656942190B91200A8EC61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222656922190B91200A8EC61 /* Main.storyboard */; };
 		222656962190B91300A8EC61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222656952190B91300A8EC61 /* Assets.xcassets */; };
 		222656992190B91300A8EC61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222656972190B91300A8EC61 /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		220F196F219C51DC00882169 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		2226568B2190B91200A8EC61 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2226568E2190B91200A8EC61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		222656902190B91200A8EC61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		222656902190B91200A8EC61 /* MetronomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewController.swift; sourceTree = "<group>"; };
 		222656932190B91200A8EC61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		222656952190B91300A8EC61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		222656982190B91300A8EC61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2223442C219ED2E200AA4372 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				222656A92192FA1D00A8EC61 /* Progress.swift */,
+				222656A72192F96A00A8EC61 /* PracticeSession.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
 		222656822190B91200A8EC61 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +88,7 @@
 		2226568D2190B91200A8EC61 /* Click */ = {
 			isa = PBXGroup;
 			children = (
+				2223442C219ED2E200AA4372 /* Progress */,
 				220F196F219C51DC00882169 /* Sounds */,
 				229C36ED219AFBD700366524 /* Data */,
 				222656A02192096100A8EC61 /* Models */,
@@ -97,8 +107,6 @@
 			children = (
 				222656A321920C2500A8EC61 /* Sticking.swift */,
 				222656A52192F79F00A8EC61 /* Rudiment.swift */,
-				222656A72192F96A00A8EC61 /* PracticeSession.swift */,
-				222656A92192FA1D00A8EC61 /* Progress.swift */,
 				222656AB2192FBFF00A8EC61 /* Drummer.swift */,
 			);
 			path = Models;
@@ -108,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				222656A12192099A00A8EC61 /* Metronome.swift */,
-				222656902190B91200A8EC61 /* ViewController.swift */,
+				222656902190B91200A8EC61 /* MetronomeViewController.swift */,
 				2251B116219DE49900C17780 /* OnTickListener.swift */,
 			);
 			path = Metronome;
@@ -265,7 +273,7 @@
 				222656A22192099A00A8EC61 /* Metronome.swift in Sources */,
 				2251B117219DE49900C17780 /* OnTickListener.swift in Sources */,
 				222656A421920C2500A8EC61 /* Sticking.swift in Sources */,
-				222656912190B91200A8EC61 /* ViewController.swift in Sources */,
+				222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */,
 				222656AA2192FA1D00A8EC61 /* Progress.swift in Sources */,
 				222656AC2192FBFF00A8EC61 /* Drummer.swift in Sources */,
 				222656A82192F96A00A8EC61 /* PracticeSession.swift in Sources */,
