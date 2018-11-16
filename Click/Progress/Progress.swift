@@ -17,4 +17,8 @@ class Progress: Object {
         let rudimentCount = rudiments.reduce(into: [:]) { $0[$1, default: 0] += 1 }
         return rudimentCount.max(by: { $0.1 < $1.1 } )?.key ?? "No favorite rudiment, go practice some more!"
     }
+    
+    func getHighestBPMAchieved() -> Int {
+        return practiceSessions.max(by: { $0.tempo < $1.tempo })?.tempo ?? 0
+    }
 }

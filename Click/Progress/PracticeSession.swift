@@ -14,6 +14,7 @@ class PracticeSession: Object {
     @objc dynamic var end: Date?
     @objc dynamic var rudiment: Rudiment?
     @objc dynamic var progress: Progress?
+    @objc dynamic var tempo = 0
     
     convenience init(forRudiment rudiment: Rudiment){
         self.init()
@@ -21,7 +22,7 @@ class PracticeSession: Object {
         self.rudiment = rudiment
     }
     
-    convenience init(startTime start: Date, endTime end: Date, forRudiment rudiment: Rudiment, drummerProgress progress: Progress){
+    convenience init(startTime start: Date, endTime end: Date, forRudiment rudiment: Rudiment, _ tempo: Int, drummerProgress progress: Progress){
         self.init()
         self.start = start
         self.end = end

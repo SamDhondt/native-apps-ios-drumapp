@@ -31,9 +31,9 @@ class DataManager {
         let drummerProgress = Progress()
         
         let practiceSessions: [PracticeSession] = [
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(120), forRudiment: rudiments[0], drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[0], drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(60), forRudiment: rudiments[0], drummerProgress: drummerProgress)
+            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(120), forRudiment: rudiments[0], 80, drummerProgress: drummerProgress),
+            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[0], 120, drummerProgress: drummerProgress),
+            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(60), forRudiment: rudiments[0], 60, drummerProgress: drummerProgress)
         ]
         
         
