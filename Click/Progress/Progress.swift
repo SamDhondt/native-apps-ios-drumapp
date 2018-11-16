@@ -21,4 +21,15 @@ class Progress: Object {
     func getHighestBPMAchieved() -> Int {
         return practiceSessions.max(by: { $0.tempo < $1.tempo })?.tempo ?? 0
     }
+    
+    func getLowestBPMAchieved() -> Int {
+        return practiceSessions.min(by: { $0.tempo < $1.tempo })?.tempo ?? 0
+    }
+    
+    func getLongestSession() -> Date? {
+        return practiceSessions.filter({ $0.duration != nil }).max(by: { $0.duration! < $1.duration! })?.duration
+    }
+    
+    
+    
 }
