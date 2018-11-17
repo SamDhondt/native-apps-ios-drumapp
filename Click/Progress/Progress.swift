@@ -25,19 +25,38 @@ class Progress: Object {
         return practiceSessions.max(by: { $0.tempo < $1.tempo })?.tempo ?? 0
     }
     
+    func getHighestBPMAchieved(forRudiment rudimentName: String) -> Int {
+        return practiceSessions.filter({ $0.rudiment?.name == rudimentName }).max(by: { $0.tempo < $1.tempo })?.tempo ?? 0
+    }
+    
     func getLowestBPMAchieved() -> Int {
         return practiceSessions.min(by: { $0.tempo < $1.tempo })?.tempo ?? 0
     }
     
-    func getLongestSession() -> (rudimentName: String, duration: Date) {
+    func getLowestBPMAchieved(forRudiment rudimentName: String) -> Int {
+        return practiceSessions.filter({ $0.rudiment?.name == rudimentName }).min(by: { $0.tempo < $1.tempo })?.tempo ?? 0
+    }
+    
+    func getLongestSession() -> (rudimentName: String, duration: Date?) {
         if let ps = practiceSessions.max(by: {$0.duration!.timeIntervalSince1970 < $1.duration!.timeIntervalSince1970}) {
-            return (ps.rudiment!.name, ps.duration!)
+            return (ps.rudiment!.name, ps.duration)
         }
-        return ("", Date())
+        return ("", nil)
+    }
+    
+    func getLongestSession(forRudiment rudimentName: String) -> Date? {
+        if let ps = practiceSessions.filter({$0.rudiment?.name == rudimentName}).max(by: {$0.duration!.timeIntervalSince1970 < $1.duration!.timeIntervalSince1970}) {
+            return ps.duration
+        }
+        return nil
     }
     
     func getTotalTimePracticed() -> Date {
         return Date(timeIntervalSince1970: practiceSessions.map({ $0.duration!.timeIntervalSince1970 }).reduce(0.0, { $0 + $1 }))
+    }
+    
+    func getTotalTimePracticed(forRudiment rudimentName: String) -> Date {
+        return Date(timeIntervalSince1970: practiceSessions.filter({ $0.rudiment?.name == rudimentName }).map({ $0.duration!.timeIntervalSince1970 }).reduce(0.0, { $0 + $1 }))
     }
     
     
