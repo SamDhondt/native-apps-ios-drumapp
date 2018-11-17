@@ -59,5 +59,17 @@ class Progress: Object {
         return Date(timeIntervalSince1970: practiceSessions.filter({ $0.rudiment?.name == rudimentName }).map({ $0.duration!.timeIntervalSince1970 }).reduce(0.0, { $0 + $1 }))
     }
     
+    func getLastTimePracticed() -> Date {
+        return Date(timeIntervalSince1970: practiceSessions.map({ $0.start!.timeIntervalSince1970}).min()!)
+    }
+    
+    func getLastTimePracticed(forRudiment rudimentName: String) -> Date {
+        return Date(timeIntervalSince1970: practiceSessions.filter({ $0.rudiment!.name == rudimentName }).map({ $0.start!.timeIntervalSince1970}).min()!)
+    }
+    
+    func getAllRudimentsInProgress() -> [String] {
+        return Array(Set(practiceSessions.map({ $0.rudiment!.name })))
+    }
+    
     
 }

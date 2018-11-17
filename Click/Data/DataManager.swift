@@ -32,9 +32,11 @@ class DataManager {
         
         let practiceSessions: [PracticeSession] = [
             PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(120), forRudiment: rudiments[0], 80, drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[0], 120, drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(60), forRudiment: rudiments[0], 60, drummerProgress: drummerProgress)
+            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[1], 120, drummerProgress: drummerProgress),
+            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(60), forRudiment: rudiments[2], 60, drummerProgress: drummerProgress)
         ]
+        
+        drummerProgress.practiceSessions.append(objectsIn: practiceSessions)
         
         
         try! realm.write {
@@ -44,7 +46,7 @@ class DataManager {
             realm.add(practiceSessions)
         }
         
-        drummerProgress.practiceSessions.append(objectsIn: realm.objects(PracticeSession.self).filter({$0.progress == drummerProgress}))
+        drummerProgress.practiceSessions.append(objectsIn: realm.objects(PracticeSession.self).filter({ $0.progress == drummerProgress }))
     }
     
     func getMetronome() -> Metronome {

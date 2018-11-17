@@ -34,5 +34,6 @@ class PracticeSession: Object {
         self.end = end
         self.rudiment = rudiment
         self.progress = progress
+        self.tempo = tempo
     }
 }
