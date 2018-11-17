@@ -20,6 +20,7 @@
 		222656AA2192FA1D00A8EC61 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656A92192FA1D00A8EC61 /* Progress.swift */; };
 		222656AC2192FBFF00A8EC61 /* Drummer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656AB2192FBFF00A8EC61 /* Drummer.swift */; };
 		2251B117219DE49900C17780 /* OnTickListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B116219DE49900C17780 /* OnTickListener.swift */; };
+		2251FC5D21A04C2E005A0160 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */; };
 		229C36EF219AFBF700366524 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C36EE219AFBF700366524 /* DataManager.swift */; };
 		8E2517069718EBBF6B2F2240 /* Pods_Click.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4157EFA62D313CBC71C5354 /* Pods_Click.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		222656A92192FA1D00A8EC61 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		222656AB2192FBFF00A8EC61 /* Drummer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drummer.swift; sourceTree = "<group>"; };
 		2251B116219DE49900C17780 /* OnTickListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTickListener.swift; sourceTree = "<group>"; };
+		2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		229C36EE219AFBF700366524 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4F047E3FDE8CD292C44416F3 /* Pods-Click.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Click.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Click/Pods-Click.debug.xcconfig"; sourceTree = "<group>"; };
 		C4157EFA62D313CBC71C5354 /* Pods_Click.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Click.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 			children = (
 				222656A92192FA1D00A8EC61 /* Progress.swift */,
 				222656A72192F96A00A8EC61 /* PracticeSession.swift */,
+				2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				222656A22192099A00A8EC61 /* Metronome.swift in Sources */,
 				2251B117219DE49900C17780 /* OnTickListener.swift in Sources */,
 				222656A421920C2500A8EC61 /* Sticking.swift in Sources */,
+				2251FC5D21A04C2E005A0160 /* ProgressViewController.swift in Sources */,
 				222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */,
 				222656AA2192FA1D00A8EC61 /* Progress.swift in Sources */,
 				222656AC2192FBFF00A8EC61 /* Drummer.swift in Sources */,

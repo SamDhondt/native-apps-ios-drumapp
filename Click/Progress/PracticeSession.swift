@@ -14,7 +14,7 @@ class PracticeSession: Object {
     @objc dynamic var end: Date?
     var duration: Date? {
         if let end = self.end, let start = self.start {
-            return Date(timeIntervalSince1970: end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            return Date(timeIntervalSince1970: end.timeIntervalSince(start))
         }
         return nil
     }

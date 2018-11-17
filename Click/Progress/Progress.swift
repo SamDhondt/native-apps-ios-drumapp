@@ -11,6 +11,9 @@ import RealmSwift
 
 class Progress: Object {
     var practiceSessions: List<PracticeSession> = List()
+    var practiced: Bool {
+        return practiceSessions.count > 0
+    }
     
     func getFavoriteRudimentName() -> String {
         let rudiments = practiceSessions.map({ $0.rudiment!.name })
@@ -26,10 +29,16 @@ class Progress: Object {
         return practiceSessions.min(by: { $0.tempo < $1.tempo })?.tempo ?? 0
     }
     
-    func getLongestSession() -> Date? {
-        return practiceSessions.filter({ $0.duration != nil }).max(by: { $0.duration! < $1.duration! })?.duration
+    func getLongestSession() -> (rudimentName: String, duration: Date) {
+        if let ps = practiceSessions.max(by: {$0.duration!.timeIntervalSince1970 < $1.duration!.timeIntervalSince1970}) {
+            return (ps.rudiment!.name, ps.duration!)
+        }
+        return ("", Date())
     }
     
+    func getTotalTimePracticed() -> Date {
+        return Date(timeIntervalSince1970: practiceSessions.map({ $0.duration!.timeIntervalSince1970 }).reduce(0.0, { $0 + $1 }))
+    }
     
     
 }
