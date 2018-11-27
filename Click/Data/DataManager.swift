@@ -14,29 +14,32 @@ class DataManager {
     private(set) var realm: Realm
     
     init() {
-        // start with new DB
-        // comment this out to keep working with same DB
-        try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+//        try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
         realm = try! Realm()
+        
         initDB()
     }
     
     private func initDB() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+        
         let rudiments: [Rudiment] = [
-            Rudiment(rudimentName: "Paradiddle", sticking: "RLRRLRLL"),
-            Rudiment(rudimentName: "Single Stroke Roll", sticking: "RLRLRLRL"),
-            Rudiment(rudimentName: "Double Stroke Roll", sticking: "RRLLRRLL")
+            Rudiment("Paradiddle", "RLRRLRLL"),
+            Rudiment("Single Stroke Roll", "RLRLRLRL"),
+            Rudiment("Double Stroke Roll", "RRLLRRLL")
         ]
         
         let drummerProgress = Progress()
         
         let practiceSessions: [PracticeSession] = [
             PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(120), forRudiment: rudiments[0], 80, drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[1], 120, drummerProgress: drummerProgress),
-            PracticeSession(startTime: Date(), endTime: Date().addingTimeInterval(60), forRudiment: rudiments[2], 60, drummerProgress: drummerProgress)
+            PracticeSession(startTime: Date().addingTimeInterval(130), endTime: Date().addingTimeInterval(240), forRudiment: rudiments[1], 120, drummerProgress: drummerProgress),
+            PracticeSession(startTime: Date().addingTimeInterval(250), endTime: Date().addingTimeInterval(500), forRudiment: rudiments[2], 60, drummerProgress: drummerProgress)
         ]
         
-        drummerProgress.practiceSessions.append(objectsIn: practiceSessions)
+        drummerProgress.practiceSessions.append(contentsOf: practiceSessions)
         
         
         try! realm.write {
@@ -46,7 +49,7 @@ class DataManager {
             realm.add(practiceSessions)
         }
         
-        drummerProgress.practiceSessions.append(objectsIn: realm.objects(PracticeSession.self).filter({ $0.progress == drummerProgress }))
+        drummerProgress.practiceSessions.append(contentsOf: realm.objects(PracticeSession.self).filter({ $0.progress == drummerProgress }))
     }
     
     func getMetronome() -> Metronome {
@@ -54,6 +57,8 @@ class DataManager {
     }
     
     func getProgress() -> Progress {
-        return realm.objects(Progress.self).first!
+        let progress = realm.objects(Progress.self).first!
+        progress.practiceSessions.append(contentsOf: realm.objects(PracticeSession.self))
+        return progress
     }
 }

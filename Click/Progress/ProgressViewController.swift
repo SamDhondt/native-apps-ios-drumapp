@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ProgressViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ProgressViewController: UIViewController, UISearchBarDelegate {
     
     private let dataManager = DataManager()
     private var progress = Progress()
     private var rudiments = ["Overall"]
+    private var selectedRudiment: String?
+    
 
     @IBOutlet weak var highestBPMLabel: UILabel!
     @IBOutlet weak var lowestBPMLabel: UILabel!
@@ -20,42 +22,61 @@ class ProgressViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var lastPracticeLabel: UILabel!
     @IBOutlet weak var timeSpentLabel: UILabel!
     
-    @IBOutlet weak var rudimentPickerView: UIPickerView!
+    
+    @IBOutlet weak var rudimentSearchBar: UISearchBar!
+    
+//    @IBOutlet weak var rudimentPickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         progress = dataManager.getProgress()
         rudiments.append(contentsOf: progress.getAllRudimentsInProgress())
+        rudimentSearchBar.delegate = self
         
-        // setup labels
-        highestBPMLabel.text = String(progress.getHighestBPMAchieved())
-        lowestBPMLabel.text = String(progress.getLowestBPMAchieved())
+        setUpLabels()
+        // setup rudimentPickerView
+//        rudimentPickerView.dataSource = self
+//        rudimentPickerView.delegate = self
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            selectedRudiment = nil
+            setUpLabels()
+        } else {
+            let matchesRudiment = progress.getAllRudimentsInProgress().contains(where: {$0.lowercased() == searchText.lowercased()})
+            if matchesRudiment {
+                selectedRudiment = searchText
+                setUpLabels()
+            }
+        }
         
-        let longestSession = progress.getLongestSession()
+        
+        
+    }
+    
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return rudiments.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return rudiments[row]
+//    }
+    private func setUpLabels(){
+        highestBPMLabel.text = "Highest BPM: \(String(progress.getHighestBPMAchieved(forRudiment: selectedRudiment)))"
+        lowestBPMLabel.text = "Lowest BPM: \(String(progress.getLowestBPMAchieved(forRudiment: selectedRudiment)))"
+        
+        let longestSession = progress.getLongestSession(forRudiment: selectedRudiment)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        longestSessionLabel.text = "\(longestSession.rudimentName) - \(dateFormatter.string(from: longestSession.duration!))"
+        longestSessionLabel.text = "Longest session: \(dateFormatter.string(from: longestSession!))"
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        lastPracticeLabel.text = dateFormatter.string(from: progress.getLastTimePracticed())
+        lastPracticeLabel.text = "Date of last practice: \(dateFormatter.string(from: progress.getLastTimePracticed(forRudiment: selectedRudiment)))"
         dateFormatter.dateFormat = "dd:HH:mm:ss"
-        timeSpentLabel.text = dateFormatter.string(from: progress.getTotalTimePracticed())
-        
-        // setup rudimentPickerView
-        rudimentPickerView.dataSource = self
-        rudimentPickerView.delegate = self
+        timeSpentLabel.text = "Total time spent practicing: \(dateFormatter.string(from: progress.getTotalTimePracticed(forRudiment: selectedRudiment)))"
     }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return rudiments.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return rudiments[row]
-    }
-    
-    
 }
