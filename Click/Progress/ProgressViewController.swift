@@ -44,14 +44,11 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
             selectedRudiment = nil
             setUpLabels()
         } else {
-            let matchesRudiment = progress.getAllRudimentsInProgress().contains(where: {$0.lowercased() == searchText.lowercased()})
-            if matchesRudiment {
-                selectedRudiment = searchText
+            if let index = progress.practiceSessions.index(where: {$0.rudiment!.name.lowercased() == searchText.lowercased()}) {
+                selectedRudiment = progress.practiceSessions[index].rudiment!.name
                 setUpLabels()
             }
         }
-        
-        
         
     }
     
