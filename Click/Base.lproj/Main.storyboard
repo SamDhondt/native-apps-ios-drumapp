@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Metronome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MetronomeViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,7 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ddL-Rk-UfX"/>
+                    <tabBarItem key="tabBarItem" title="Metronome" image="play.png" id="ddL-Rk-UfX"/>
                     <connections>
                         <outlet property="playButton" destination="EYA-sA-9nK" id="zRv-ID-Ivu"/>
                         <outlet property="soundControl" destination="q5n-9n-8T2" id="sx4-hC-5Hh"/>
@@ -93,7 +93,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-9E-Wpn">
                                 <rect key="frame" x="27.5" y="151" width="320" height="336"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="Rudiment" translatesAutoresizingMaskIntoConstraints="NO" id="q4S-lF-esa">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Rudiment" translatesAutoresizingMaskIntoConstraints="NO" id="q4S-lF-esa">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
@@ -141,7 +141,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dyg-h6-jhx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="-2" title="Progress" id="5CD-pz-7Rz"/>
+                    <tabBarItem key="tabBarItem" tag="-2" title="Progress" image="Investment.png" id="5CD-pz-7Rz"/>
                     <connections>
                         <outlet property="highestBPMLabel" destination="ZWx-50-5AG" id="TWf-e5-17c"/>
                         <outlet property="lastPracticeLabel" destination="t2c-c3-ycB" id="PfP-7n-flx"/>
@@ -155,7 +155,7 @@
             </objects>
             <point key="canvasLocation" x="1032.8" y="213.64317841079463"/>
         </scene>
-        <!--Item-->
+        <!--Rudiments-->
         <scene sceneID="Zrb-SZ-Y89">
             <objects>
                 <viewController id="i7q-Qo-15X" sceneMemberID="viewController">
@@ -165,7 +165,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kH1-ph-98O"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="BET-iT-fPd"/>
+                    <tabBarItem key="tabBarItem" title="Rudiments" image="gallery.png" id="BET-iT-fPd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4Y-pI-L27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,4 +192,9 @@
             <point key="canvasLocation" x="93.599999999999994" y="209.14542728635683"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Investment.png" width="30" height="30"/>
+        <image name="gallery.png" width="30" height="30"/>
+        <image name="play.png" width="30" height="30"/>
+    </resources>
 </document>

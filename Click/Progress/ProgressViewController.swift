@@ -34,9 +34,6 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
         rudimentSearchBar.delegate = self
         
         setUpLabels()
-        // setup rudimentPickerView
-//        rudimentPickerView.dataSource = self
-//        rudimentPickerView.delegate = self
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -51,18 +48,7 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
         }
         
     }
-    
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return rudiments.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return rudiments[row]
-//    }
+
     private func setUpLabels(){
         highestBPMLabel.text = "Highest BPM: \(String(progress.getHighestBPMAchieved(forRudiment: selectedRudiment)))"
         lowestBPMLabel.text = "Lowest BPM: \(String(progress.getLowestBPMAchieved(forRudiment: selectedRudiment)))"
@@ -70,10 +56,22 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
         let longestSession = progress.getLongestSession(forRudiment: selectedRudiment)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        longestSessionLabel.text = "Longest session: \(dateFormatter.string(from: longestSession!))"
+        longestSessionLabel.text = "Longest session: \(longestSession!.getAsHoursMinutesSecondsString())"
         dateFormatter.dateFormat = "dd-MM-yyyy"
         lastPracticeLabel.text = "Date of last practice: \(dateFormatter.string(from: progress.getLastTimePracticed(forRudiment: selectedRudiment)))"
         dateFormatter.dateFormat = "dd:HH:mm:ss"
-        timeSpentLabel.text = "Total time spent practicing: \(dateFormatter.string(from: progress.getTotalTimePracticed(forRudiment: selectedRudiment)))"
+        timeSpentLabel.text = "Total time spent practicing: \(progress.getTotalTimePracticed().getAsDaysHoursMinutesSecondsString())"
+    }
+}
+
+extension Date {
+    func getAsHoursMinutesSecondsString() -> String {
+        let seconds = Int(self.timeIntervalSince1970)
+        return "\(seconds / 3600)h \((seconds % 3600) / 60)m \((seconds % 3600) % 60)s"
+    }
+    
+    func getAsDaysHoursMinutesSecondsString() -> String {
+        let seconds = Int(self.timeIntervalSince1970)
+        return "\(seconds / (24 * 3600))d \((seconds % (24 * 3600)) / 3600)h \((seconds % 3600) / 60)m \((seconds % 3600) % 60)s"
     }
 }
