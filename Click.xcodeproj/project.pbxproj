@@ -20,6 +20,7 @@
 		222656AA2192FA1D00A8EC61 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656A92192FA1D00A8EC61 /* Progress.swift */; };
 		222656AC2192FBFF00A8EC61 /* Drummer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656AB2192FBFF00A8EC61 /* Drummer.swift */; };
 		224A4F5B21AEDB24004AE95F /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 224A4F5A21AEDB23004AE95F /* Images */; };
+		224A4F5E21AEF949004AE95F /* RudimentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */; };
 		2251B117219DE49900C17780 /* OnTickListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B116219DE49900C17780 /* OnTickListener.swift */; };
 		2251FC5D21A04C2E005A0160 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */; };
 		229C36EF219AFBF700366524 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C36EE219AFBF700366524 /* DataManager.swift */; };
@@ -43,6 +44,7 @@
 		222656A92192FA1D00A8EC61 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		222656AB2192FBFF00A8EC61 /* Drummer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drummer.swift; sourceTree = "<group>"; };
 		224A4F5A21AEDB23004AE95F /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RudimentsViewController.swift; sourceTree = "<group>"; };
 		2251B116219DE49900C17780 /* OnTickListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTickListener.swift; sourceTree = "<group>"; };
 		2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		229C36EE219AFBF700366524 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		2226568D2190B91200A8EC61 /* Click */ = {
 			isa = PBXGroup;
 			children = (
+				224A4F5C21AEF912004AE95F /* Rudiments */,
 				224A4F5A21AEDB23004AE95F /* Images */,
 				2223442C219ED2E200AA4372 /* Progress */,
 				220F196F219C51DC00882169 /* Sounds */,
@@ -112,10 +115,18 @@
 			isa = PBXGroup;
 			children = (
 				222656A321920C2500A8EC61 /* Sticking.swift */,
-				222656A52192F79F00A8EC61 /* Rudiment.swift */,
 				222656AB2192FBFF00A8EC61 /* Drummer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		224A4F5C21AEF912004AE95F /* Rudiments */ = {
+			isa = PBXGroup;
+			children = (
+				222656A52192F79F00A8EC61 /* Rudiment.swift */,
+				224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */,
+			);
+			path = Rudiments;
 			sourceTree = "<group>";
 		};
 		2251B115219DE44400C17780 /* Metronome */ = {
@@ -279,6 +290,7 @@
 			files = (
 				222656A22192099A00A8EC61 /* Metronome.swift in Sources */,
 				2251B117219DE49900C17780 /* OnTickListener.swift in Sources */,
+				224A4F5E21AEF949004AE95F /* RudimentsViewController.swift in Sources */,
 				222656A421920C2500A8EC61 /* Sticking.swift in Sources */,
 				2251FC5D21A04C2E005A0160 /* ProgressViewController.swift in Sources */,
 				222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */,

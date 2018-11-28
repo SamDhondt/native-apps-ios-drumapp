@@ -12,7 +12,7 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
     
     private let dataManager = DataManager()
     private var progress = Progress()
-    private var rudiments = ["Overall"]
+//    private var rudiments = ["Overall"]
     private var selectedRudiment: String?
     
 
@@ -30,7 +30,7 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         progress = dataManager.getProgress()
-        rudiments.append(contentsOf: progress.getAllRudimentsInProgress())
+//        rudiments.append(contentsOf: progress.getAllRudimentsInProgress())
         rudimentSearchBar.delegate = self
         
         setUpLabels()
@@ -46,7 +46,6 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
                 setUpLabels()
             }
         }
-        
     }
 
     private func setUpLabels(){
