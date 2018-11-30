@@ -23,6 +23,7 @@
 		224A4F5E21AEF949004AE95F /* RudimentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */; };
 		2251B117219DE49900C17780 /* OnTickListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B116219DE49900C17780 /* OnTickListener.swift */; };
 		2251FC5D21A04C2E005A0160 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */; };
+		2274624621B15A18003F462E /* RudimentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274624521B15A18003F462E /* RudimentCell.swift */; };
 		229C36EF219AFBF700366524 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C36EE219AFBF700366524 /* DataManager.swift */; };
 		8E2517069718EBBF6B2F2240 /* Pods_Click.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4157EFA62D313CBC71C5354 /* Pods_Click.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RudimentsViewController.swift; sourceTree = "<group>"; };
 		2251B116219DE49900C17780 /* OnTickListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTickListener.swift; sourceTree = "<group>"; };
 		2251FC5C21A04C2E005A0160 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		2274624521B15A18003F462E /* RudimentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RudimentCell.swift; sourceTree = "<group>"; };
 		229C36EE219AFBF700366524 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4F047E3FDE8CD292C44416F3 /* Pods-Click.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Click.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Click/Pods-Click.debug.xcconfig"; sourceTree = "<group>"; };
 		C4157EFA62D313CBC71C5354 /* Pods_Click.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Click.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 			children = (
 				222656A52192F79F00A8EC61 /* Rudiment.swift */,
 				224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */,
+				2274624521B15A18003F462E /* RudimentCell.swift */,
 			);
 			path = Rudiments;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				222656A22192099A00A8EC61 /* Metronome.swift in Sources */,
+				2274624621B15A18003F462E /* RudimentCell.swift in Sources */,
 				2251B117219DE49900C17780 /* OnTickListener.swift in Sources */,
 				224A4F5E21AEF949004AE95F /* RudimentsViewController.swift in Sources */,
 				222656A421920C2500A8EC61 /* Sticking.swift in Sources */,
