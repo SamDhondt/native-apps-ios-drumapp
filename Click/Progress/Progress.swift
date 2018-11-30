@@ -40,8 +40,12 @@ class Progress: Object {
         return Date(timeIntervalSince1970: filterPracticeSessions(onRudiment: rudimentName).map({ $0.duration!.timeIntervalSince1970 }).reduce(0.0, { $0 + $1 }))
     }
     
-    func getLastTimePracticed(forRudiment rudimentName: String? = nil) -> Date {
-        return Date(timeIntervalSince1970: filterPracticeSessions(onRudiment: rudimentName).map({ $0.start!.timeIntervalSince1970}).min()!)
+    func getLastTimePracticed(forRudiment rudimentName: String? = nil) -> Date? {
+        let sessions = filterPracticeSessions(onRudiment: rudimentName)
+        if sessions.count > 0, let lastTimePracticedInInterval = sessions.map({ $0.start!.timeIntervalSince1970}).min() {
+            return Date(timeIntervalSince1970: lastTimePracticedInInterval)
+        }
+        return nil
     }
     
     func getAllRudimentsInProgress() -> [String] {

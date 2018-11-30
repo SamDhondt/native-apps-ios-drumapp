@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
 
 class ProgressViewController: UIViewController, UISearchBarDelegate {
     
@@ -14,6 +16,7 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
     private var progress = Progress()
 //    private var rudiments = ["Overall"]
     private var selectedRudiment: String?
+    private var notificationToken: NotificationToken?
     
 
     @IBOutlet weak var highestBPMLabel: UILabel!
@@ -30,10 +33,32 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         progress = dataManager.getProgress()
+        
+        let realm = try! Realm()
+        notificationToken = realm.observe({ [unowned self] note, realm in self.progress = self.dataManager.getProgress()})
 //        rudiments.append(contentsOf: progress.getAllRudimentsInProgress())
         rudimentSearchBar.delegate = self
         
         setUpLabels()
+    }
+    
+    @IBAction func resetProgressClicked(_ sender: UIButton) {
+        var message = "Are you sure you want to reset all progress?"
+        if let rud = selectedRudiment {
+            message = "Are you sure you want to reset progress for rudiment \(rud)"
+        }
+        let confirmationDialog = UIAlertController(title: "Confirm Reset", message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
+            // reset progress
+            self.dataManager.resetProgress(of: self.selectedRudiment)
+            self.setUpLabels()
+        })
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        confirmationDialog.addAction(confirmAction)
+        confirmationDialog.addAction(cancelAction)
+        
+        present(confirmationDialog, animated: true, completion: nil)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -48,18 +73,22 @@ class ProgressViewController: UIViewController, UISearchBarDelegate {
         }
     }
 
-    private func setUpLabels(){
+    private func setUpLabels() {
         highestBPMLabel.text = "Highest BPM: \(String(progress.getHighestBPMAchieved(forRudiment: selectedRudiment)))"
         lowestBPMLabel.text = "Lowest BPM: \(String(progress.getLowestBPMAchieved(forRudiment: selectedRudiment)))"
         
         let longestSession = progress.getLongestSession(forRudiment: selectedRudiment)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        longestSessionLabel.text = "Longest session: \(longestSession!.getAsHoursMinutesSecondsString())"
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        lastPracticeLabel.text = "Date of last practice: \(dateFormatter.string(from: progress.getLastTimePracticed(forRudiment: selectedRudiment)))"
-        dateFormatter.dateFormat = "dd:HH:mm:ss"
-        timeSpentLabel.text = "Total time spent practicing: \(progress.getTotalTimePracticed().getAsDaysHoursMinutesSecondsString())"
+        longestSessionLabel.text = "Longest session: \(longestSession?.getAsHoursMinutesSecondsString() ?? "No practice sessions")"
+        if let lastPractice = progress.getLastTimePracticed(forRudiment: selectedRudiment) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            lastPracticeLabel.text = "Date of last practice: \(dateFormatter.string(from: lastPractice))"
+        } else {
+            lastPracticeLabel.text = "Date of last practice: No practice sessions"
+        }
+
+        timeSpentLabel.text = "Total time spent practicing: \(progress.getTotalTimePracticed(forRudiment: selectedRudiment).getAsDaysHoursMinutesSecondsString())"
+        
     }
 }
 

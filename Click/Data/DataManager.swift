@@ -52,7 +52,6 @@ class DataManager {
             realm.add(practiceSessions)
         }
         
-        drummerProgress.practiceSessions.append(contentsOf: realm.objects(PracticeSession.self).filter({ $0.progress == drummerProgress }))
     }
     
     func getMetronome() -> Metronome {
@@ -67,5 +66,13 @@ class DataManager {
     
     func getRudiments() -> Results<Rudiment> {
         return realm.objects(Rudiment.self)
+    }
+    
+    func resetProgress(of rudimentName: String? = nil) {
+        var sessionsToDelete = [PracticeSession]()
+        sessionsToDelete.append(contentsOf: rudimentName == nil ? getProgress().practiceSessions : getProgress().practiceSessions.filter({ $0.rudiment!.name == rudimentName }))
+        try! realm.write {
+            realm.delete(sessionsToDelete)
+        }
     }
 }

@@ -70,7 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Metronome" image="play.png" id="ddL-Rk-UfX"/>
+                    <tabBarItem key="tabBarItem" title="Metronome" image="Metronome" selectedImage="Metronome" id="ddL-Rk-UfX"/>
                     <connections>
                         <outlet property="playButton" destination="EYA-sA-9nK" id="zRv-ID-Ivu"/>
                         <outlet property="soundControl" destination="q5n-9n-8T2" id="sx4-hC-5Hh"/>
@@ -90,47 +90,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-9E-Wpn">
-                                <rect key="frame" x="27.5" y="151" width="320" height="336"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-9E-Wpn">
+                                <rect key="frame" x="27.5" y="78" width="320" height="482"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Rudiment" translatesAutoresizingMaskIntoConstraints="NO" id="q4S-lF-esa">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2yR-cK-3hu">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="63.5" width="320" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-50-5AG">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="71" width="320" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lowest BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80o-F8-PCh">
-                                        <rect key="frame" x="0.0" y="112" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="142" width="320" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longest session:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkO-Gu-qtS">
-                                        <rect key="frame" x="0.0" y="168" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="213" width="320" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of last practice:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-c3-ycB">
-                                        <rect key="frame" x="0.0" y="224" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="284" width="320" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total time spent practicing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UN0-WW-RM7">
-                                        <rect key="frame" x="0.0" y="280" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="355" width="320" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16L-q9-z5J">
+                                        <rect key="frame" x="0.0" y="426" width="320" height="56"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Reset progress">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetProgressClicked:" destination="5iP-xe-FiM" eventType="touchUpInside" id="6hl-JW-D2p"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -141,7 +152,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dyg-h6-jhx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="-2" title="Progress" image="Investment.png" id="5CD-pz-7Rz"/>
+                    <tabBarItem key="tabBarItem" tag="-2" title="Progress" image="Progress" selectedImage="Progress" id="5CD-pz-7Rz"/>
                     <connections>
                         <outlet property="highestBPMLabel" destination="ZWx-50-5AG" id="TWf-e5-17c"/>
                         <outlet property="lastPracticeLabel" destination="t2c-c3-ycB" id="PfP-7n-flx"/>
@@ -177,7 +188,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kH1-ph-98O"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rudiments" image="gallery.png" id="BET-iT-fPd"/>
+                    <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="BET-iT-fPd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4Y-pI-L27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -205,8 +216,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Investment.png" width="30" height="30"/>
-        <image name="gallery.png" width="30" height="30"/>
-        <image name="play.png" width="30" height="30"/>
+        <image name="Metronome" width="30" height="30"/>
+        <image name="Progress" width="30" height="30"/>
+        <image name="Rudiments" width="30" height="30"/>
     </resources>
 </document>
