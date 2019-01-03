@@ -9,11 +9,14 @@
 import UIKit
 import RealmSwift
 
-class RudimentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RudimentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private var rudiments = [Rudiment]()
+    private var filteredRudiments = [Rudiment]()
     private var notificationToken: NotificationToken?
+    private var applyFilter = false
 
     @IBOutlet weak var rudimentTableView: UITableView!
+    @IBOutlet weak var rudimentSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
+        rudimentSearchBar.delegate = self
         
 //        let realm = try! Realm()
 //        notificationToken = realm.observe({ notification, realm in
@@ -43,17 +47,32 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (applyFilter) {
+            return filteredRudiments.count
+        }
         return rudiments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = rudimentTableView.dequeueReusableCell(withIdentifier: "RudimentCell", for: indexPath) as? RudimentCell {
-            let rudiment = rudiments[indexPath.row]
+            let rudiment = applyFilter ? filteredRudiments[indexPath.row] : rudiments[indexPath.row]
             cell.rudimentNameLabel.text = rudiment.name
             cell.rudimentStickingLabel.text = rudiment.sticking
             return cell
         }
         fatalError("Could not create RudimentCell")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.isEmpty) {
+            applyFilter = false
+        } else {
+            applyFilter = true
+            filteredRudiments = rudiments.filter({
+                $0.name.lowercased().contains(searchText.lowercased())
+            })
+        }
+        rudimentTableView.reloadData()
     }
 
 }

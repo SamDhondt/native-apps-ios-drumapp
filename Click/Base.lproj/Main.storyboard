@@ -145,6 +145,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="BET-iT-fPd"/>
                     <connections>
+                        <outlet property="rudimentSearchBar" destination="LAR-9a-NaO" id="qSo-Fz-V9p"/>
                         <outlet property="rudimentTableView" destination="ATu-7L-cfl" id="OJ2-8b-ZjV"/>
                     </connections>
                 </viewController>
