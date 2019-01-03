@@ -52,7 +52,7 @@ class MetronomeViewController: UIViewController, OnTickListener {
             // checks every 2 sec if metronome should reset due to tempo change
             // eases more into the new tempo than resetting during onSliderChanged
             timer = Timer.scheduledTimer(
-                timeInterval: 2,
+                timeInterval: 0.2,
                 target: self,
                 selector: #selector(shouldReset),
                 userInfo: nil, repeats: true)
