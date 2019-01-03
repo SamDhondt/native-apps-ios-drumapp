@@ -8,14 +8,18 @@
 
 import UIKit
 import AudioToolbox
+import RealmSwift
+import Realm
 
 /// Displays controls to use a metronome. Implements OnTickListener so it can listen to a metronome and play sound when it ticks.
 class MetronomeViewController: UIViewController, OnTickListener {
-    // contains the Realm persistence
-    private let dataManager = DataManager()
+    private let realm = try! Realm()
+    private lazy var metronome: Metronome? = {
+        return realm.objects(Metronome.self).first
+    }()
+    
     private var timer: Timer?
     private var originalMetronomeTempo = 0
-    private var metronome: Metronome = Metronome()
     
     // dictionary that contains the SoundTypes and their corresponding SystemSoundIDs
     private var sounds: [SoundType:SystemSoundID] = [:]
@@ -30,21 +34,21 @@ class MetronomeViewController: UIViewController, OnTickListener {
     
     @IBAction func onSliderChanged(_ sender: UISlider) {
         let newValue = Int(sender.value)
-        try! dataManager.realm.write {
-            metronome.tempo = newValue
+        try! realm.write {
+            metronome?.tempo = newValue
         }
         tempoLabel.text = String(newValue)
     }
     
     @IBAction func onPlayPressed(_ sender: UIButton) {
-        if (metronome.playing){ // Should stop
-            metronome.stop()
+        if (metronome!.playing){ // Should stop
+            metronome!.stop()
             timer?.invalidate()
             playButton.setTitle("Play", for: UIControl.State.normal)
         } else { // Should Play
-            metronome.play()
-            originalMetronomeTempo = metronome.tempo
-            
+            metronome!.play()
+            originalMetronomeTempo = metronome!.tempo
+
             // checks every 2 sec if metronome should reset due to tempo change
             // eases more into the new tempo than resetting during onSliderChanged
             timer = Timer.scheduledTimer(
@@ -60,36 +64,36 @@ class MetronomeViewController: UIViewController, OnTickListener {
     @IBAction func onSegmentOptionSelected(_ sender: UISegmentedControl) {
         if let option = sender.titleForSegment(at: sender.selectedSegmentIndex) {
             if let newSoundType = SoundType(rawValue: option) {
-                try! dataManager.realm.write {
-                    metronome.soundType = newSoundType
-                    metronome.reset()
+                try! realm.write {
+                    metronome!.soundType = newSoundType
+                    metronome!.reset()
                 }
             }
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        metronome = dataManager.getMetronome()
-        
-        try! dataManager.realm.write {
-            metronome.onTickListener = self
+        try! realm.write {
+            if (metronome == nil) {
+                realm.add(Metronome())
+            }
+            metronome!.onTickListener = self
         }
         
         // setup tempoLabel
-        tempoLabel.text = String(metronome.tempo)
+        tempoLabel.text = String(metronome!.tempo)
         
         // setup tempoSlider
-        tempoSlider.value = Float(metronome.tempo)
+        tempoSlider.value = Float(metronome!.tempo)
         
         
         for index in 0..<SoundType.allCases.count {
             // setup soundControl (Segmented Control)
             let soundType = SoundType.allCases[index]
             soundControl.setTitle(soundType.rawValue, forSegmentAt: index)
-            if soundType == metronome.soundType {
+            if soundType == metronome!.soundType {
                 soundControl.selectedSegmentIndex = index
             }
             
@@ -108,14 +112,14 @@ class MetronomeViewController: UIViewController, OnTickListener {
     
     /// checks if the metronome should be reset when a tempo change occurs
     @objc private func shouldReset(){
-        if originalMetronomeTempo != metronome.tempo {
-            originalMetronomeTempo = metronome.tempo
-            metronome.reset()
+        if originalMetronomeTempo != metronome!.tempo {
+            originalMetronomeTempo = metronome!.tempo
+            metronome!.reset()
         }
     }
     
     func onTick() {
-        AudioServicesPlaySystemSound(sounds[metronome.soundType]!)
+        AudioServicesPlaySystemSound(sounds[metronome!.soundType]!)
     }
 
 

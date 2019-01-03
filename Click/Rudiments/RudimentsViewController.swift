@@ -11,7 +11,6 @@ import RealmSwift
 
 class RudimentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private var rudiments = [Rudiment]()
-    private let dataManager = DataManager()
     private var notificationToken: NotificationToken?
 
     @IBOutlet weak var rudimentTableView: UITableView!
@@ -19,16 +18,23 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rudiments.append(contentsOf: dataManager.getRudiments())
+        rudiments.append(contentsOf: [
+            Rudiment("Paradiddle", "RLRRLRLL"),
+            Rudiment("Single Stroke Roll", "RLRLRLRL"),
+            Rudiment("Double Stroke Roll", "RRLLRRLL"),
+            Rudiment("Paradiddlediddle", "RLRRLL"),
+            Rudiment("Six Stroke Roll", "RLLRRL"),
+            Rudiment("Double paradiddle", "RLRLRRLRLRLL"),
+        ])
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
         
-        let realm = try! Realm()
-        notificationToken = realm.observe({ notification, realm in
-            self.rudiments.removeAll()
-            self.rudiments.append(contentsOf: self.dataManager.getRudiments())
-        })
+//        let realm = try! Realm()
+//        notificationToken = realm.observe({ notification, realm in
+//            self.rudiments.removeAll()
+//            self.rudiments.append(contentsOf: realm.objects(Metronome.self))
+//        })
         
     }
     
