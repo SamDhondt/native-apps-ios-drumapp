@@ -13,7 +13,7 @@ class Rudiment: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var sticking: String = ""
     
-    convenience init(rudimentName name: String, sticking: String){
+    convenience init(_ name: String, _ sticking: String){
         self.init()
         self.name = name
         self.sticking = sticking

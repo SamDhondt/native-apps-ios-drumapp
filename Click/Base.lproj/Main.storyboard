@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iP-xe-FiM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jku-an-Tdk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Metronome View Controller-->
+        <!--Metronome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MetronomeViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rSz-CN-KqO">
-                                <rect key="frame" x="37.5" y="239.5" width="300" height="208.5"/>
+                                <rect key="frame" x="37.5" y="215" width="300" height="208.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg5-9e-xO3">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
@@ -70,6 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Metronome" image="Metronome" selectedImage="Metronome" id="ddL-Rk-UfX"/>
                     <connections>
                         <outlet property="playButton" destination="EYA-sA-9nK" id="zRv-ID-Ivu"/>
                         <outlet property="soundControl" destination="q5n-9n-8T2" id="sx4-hC-5Hh"/>
@@ -79,104 +80,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-356" y="-153"/>
+            <point key="canvasLocation" x="1032.8" y="-510.49475262368821"/>
         </scene>
-        <!--Progress View Controller-->
-        <scene sceneID="KmK-F2-qRQ">
+        <!--Rudiments-->
+        <scene sceneID="Zrb-SZ-Y89">
             <objects>
-                <viewController id="5iP-xe-FiM" customClass="ProgressViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="txp-XN-gTw">
+                <viewController id="i7q-Qo-15X" customClass="RudimentsViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mzF-DK-wY3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-9E-Wpn">
-                                <rect key="frame" x="27.5" y="44.5" width="320" height="598.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e8W-VB-NmZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOA-Je-ifP">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZi-Ti-vpW">
-                                        <rect key="frame" x="0.0" y="219" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-50-5AG">
-                                        <rect key="frame" x="0.0" y="242.5" width="320" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lowest BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztz-BR-4F3">
-                                        <rect key="frame" x="0.0" y="295.5" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80o-F8-PCh">
-                                        <rect key="frame" x="0.0" y="319" width="320" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longest session:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3X-4V-1dq">
-                                        <rect key="frame" x="0.0" y="372" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkO-Gu-qtS">
-                                        <rect key="frame" x="0.0" y="395.5" width="320" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of last practice:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scc-Si-rbC">
-                                        <rect key="frame" x="0.0" y="448.5" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-c3-ycB">
-                                        <rect key="frame" x="0.0" y="472" width="320" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall time spent on rudiment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K99-EA-Ntz">
-                                        <rect key="frame" x="0.0" y="525" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UN0-WW-RM7">
-                                        <rect key="frame" x="0.0" y="548.5" width="320" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter rudiments" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-9a-NaO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATu-7L-cfl">
+                                        <rect key="frame" x="0.0" y="66" width="375" height="532"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RudimentCell" textLabel="MxG-8j-lIB" detailTextLabel="FOi-ZP-ki8" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="Fk8-rj-R4d" customClass="RudimentCell" customModule="Click" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fk8-rj-R4d" id="TvF-Vc-cbs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MxG-8j-lIB">
+                                                            <rect key="frame" x="15" y="17" width="45" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sticking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FOi-ZP-ki8">
+                                                            <rect key="frame" x="15" y="40.5" width="45.5" height="14.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="rudimentNameLabel" destination="MxG-8j-lIB" id="DnM-RO-2ZI"/>
+                                                    <outlet property="rudimentStickingLabel" destination="FOi-ZP-ki8" id="b5T-Q3-2yx"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mYu-9E-Wpn" firstAttribute="centerY" secondItem="Dyg-h6-jhx" secondAttribute="centerY" id="1zM-AK-5xu"/>
-                            <constraint firstItem="mYu-9E-Wpn" firstAttribute="centerX" secondItem="Dyg-h6-jhx" secondAttribute="centerX" id="Xhk-nR-AnU"/>
+                            <constraint firstItem="e8W-VB-NmZ" firstAttribute="centerX" secondItem="kH1-ph-98O" secondAttribute="centerX" id="IfX-7b-Bbs"/>
+                            <constraint firstItem="e8W-VB-NmZ" firstAttribute="leading" secondItem="mzF-DK-wY3" secondAttribute="leading" id="exD-jb-kSv"/>
+                            <constraint firstItem="e8W-VB-NmZ" firstAttribute="bottom" secondItem="kH1-ph-98O" secondAttribute="bottom" id="r2R-at-gPv"/>
+                            <constraint firstItem="e8W-VB-NmZ" firstAttribute="centerY" secondItem="kH1-ph-98O" secondAttribute="centerY" id="vOS-VD-oRw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Dyg-h6-jhx"/>
+                        <viewLayoutGuide key="safeArea" id="kH1-ph-98O"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="BET-iT-fPd"/>
                     <connections>
-                        <outlet property="highestBPMLabel" destination="ZWx-50-5AG" id="TWf-e5-17c"/>
-                        <outlet property="lastPracticeLabel" destination="t2c-c3-ycB" id="PfP-7n-flx"/>
-                        <outlet property="longestSessionLabel" destination="SkO-Gu-qtS" id="0AO-OL-xC2"/>
-                        <outlet property="lowestBPMLabel" destination="80o-F8-PCh" id="mUm-dX-kcL"/>
-                        <outlet property="rudimentPickerView" destination="tOA-Je-ifP" id="owd-7C-fSl"/>
-                        <outlet property="timeSpentLabel" destination="UN0-WW-RM7" id="8t1-H9-C2L"/>
+                        <outlet property="rudimentTableView" destination="ATu-7L-cfl" id="OJ2-8b-ZjV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5PZ-3L-cgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k4Y-pI-L27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754.39999999999998" y="-153.37331334332833"/>
+            <point key="canvasLocation" x="1032.8" y="929.68515742128943"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="tt2-zB-YvG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jku-an-Tdk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gav-NZ-TPL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wnG-tU-htV"/>
+                        <segue destination="i7q-Qo-15X" kind="relationship" relationship="viewControllers" id="NYd-Rh-g87"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ko2-fy-d8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.599999999999994" y="209.14542728635683"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Metronome" width="30" height="30"/>
+        <image name="Rudiments" width="30" height="30"/>
+    </resources>
 </document>
