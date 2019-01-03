@@ -78,7 +78,9 @@ class MetronomeViewController: UIViewController, OnTickListener {
         try! realm.write {
             if (metronome == nil) {
                 realm.add(Metronome())
+                metronome = realm.objects(Metronome.self).first
             }
+            
             metronome!.onTickListener = self
         }
         

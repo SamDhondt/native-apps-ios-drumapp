@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220131E921DE5B3700FC3764 /* RudimentsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220131E821DE5B3700FC3764 /* RudimentsSplitViewController.swift */; };
+		220131EB21DE5E7900FC3764 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220131EA21DE5E7900FC3764 /* Comment.swift */; };
 		220F1970219C51DC00882169 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 220F196F219C51DC00882169 /* Sounds */; };
 		2226568F2190B91200A8EC61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2226568E2190B91200A8EC61 /* AppDelegate.swift */; };
 		222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222656902190B91200A8EC61 /* MetronomeViewController.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		1F8F7615DFE15F798D135956 /* Pods-Click.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Click.release.xcconfig"; path = "Pods/Target Support Files/Pods-Click/Pods-Click.release.xcconfig"; sourceTree = "<group>"; };
+		220131E821DE5B3700FC3764 /* RudimentsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RudimentsSplitViewController.swift; sourceTree = "<group>"; };
+		220131EA21DE5E7900FC3764 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		220F196F219C51DC00882169 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		2226568B2190B91200A8EC61 /* Click.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Click.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2226568E2190B91200A8EC61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				222656A52192F79F00A8EC61 /* Rudiment.swift */,
 				224A4F5D21AEF949004AE95F /* RudimentsViewController.swift */,
 				2274624521B15A18003F462E /* RudimentCell.swift */,
+				220131E821DE5B3700FC3764 /* RudimentsSplitViewController.swift */,
+				220131EA21DE5E7900FC3764 /* Comment.swift */,
 			);
 			path = Rudiments;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 				222656912190B91200A8EC61 /* MetronomeViewController.swift in Sources */,
 				222656A62192F79F00A8EC61 /* Rudiment.swift in Sources */,
 				2226568F2190B91200A8EC61 /* AppDelegate.swift in Sources */,
+				220131EB21DE5E7900FC3764 /* Comment.swift in Sources */,
+				220131E921DE5B3700FC3764 /* RudimentsSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
