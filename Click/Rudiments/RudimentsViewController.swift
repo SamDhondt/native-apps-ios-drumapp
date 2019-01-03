@@ -32,6 +32,7 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
+        rudimentSearchBar.delegate = self
         
 //        let realm = try! Realm()
 //        notificationToken = realm.observe({ notification, realm in
@@ -67,9 +68,9 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
             applyFilter = false
         } else {
             applyFilter = true
-            filteredRudiments.append(contentsOf: rudiments.filter({
+            filteredRudiments = rudiments.filter({
                 $0.name.lowercased().contains(searchText.lowercased())
-            }))
+            })
         }
         rudimentTableView.reloadData()
     }
