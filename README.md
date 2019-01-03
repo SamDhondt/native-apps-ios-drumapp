@@ -1,2 +1,2 @@
 # Click - a drumapp
-Click offers you metronome and also a way to track your progress in practicing rudiments as a drummer.
+This is an iPhone app for the course Native Apps II: iOS at University College Ghent
