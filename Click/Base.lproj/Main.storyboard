@@ -82,6 +82,51 @@
             </objects>
             <point key="canvasLocation" x="1032.8" y="-510.49475262368821"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="eUX-f0-1Lf">
+            <objects>
+                <viewController id="ylt-10-YcA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yhA-iY-yDX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="D0O-ix-NtU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VG7-bT-xEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1697" y="1073"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qcA-ij-Zj8">
+            <objects>
+                <navigationController id="shQ-Fe-WLh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kzR-Oi-Z82">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i7q-Qo-15X" kind="relationship" relationship="rootViewController" id="mMI-4Y-88c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqc-IH-6nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1697" y="406"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="kgY-Pk-Hbp">
+            <objects>
+                <splitViewController id="NrY-bV-4SF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="h82-Cg-IpT"/>
+                    <connections>
+                        <segue destination="shQ-Fe-WLh" kind="relationship" relationship="masterViewController" id="ble-xH-7Sd"/>
+                        <segue destination="ylt-10-YcA" kind="relationship" relationship="detailViewController" id="c4O-UP-249"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ZM-hG-5Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="737"/>
+        </scene>
         <!--Rudiments-->
         <scene sceneID="Zrb-SZ-Y89">
             <objects>
@@ -91,14 +136,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e8W-VB-NmZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter rudiments" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-9a-NaO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATu-7L-cfl">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="532"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="498"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RudimentCell" textLabel="MxG-8j-lIB" detailTextLabel="FOi-ZP-ki8" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="Fk8-rj-R4d" customClass="RudimentCell" customModule="Click" customModuleProvider="target">
@@ -144,6 +189,7 @@
                         <viewLayoutGuide key="safeArea" id="kH1-ph-98O"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="BET-iT-fPd"/>
+                    <navigationItem key="navigationItem" id="EPL-g5-Jiw"/>
                     <connections>
                         <outlet property="rudimentSearchBar" destination="LAR-9a-NaO" id="qSo-Fz-V9p"/>
                         <outlet property="rudimentTableView" destination="ATu-7L-cfl" id="OJ2-8b-ZjV"/>
@@ -151,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4Y-pI-L27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032.8" y="929.68515742128943"/>
+            <point key="canvasLocation" x="2711" y="405"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tt2-zB-YvG">
@@ -165,7 +211,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wnG-tU-htV"/>
-                        <segue destination="i7q-Qo-15X" kind="relationship" relationship="viewControllers" id="NYd-Rh-g87"/>
+                        <segue destination="NrY-bV-4SF" kind="relationship" relationship="viewControllers" id="LWq-4z-b8Y"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ko2-fy-d8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
