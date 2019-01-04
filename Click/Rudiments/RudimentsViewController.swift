@@ -56,7 +56,8 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = rudimentTableView.dequeueReusableCell(withIdentifier: "RudimentCell", for: indexPath) as? RudimentCell {
             let rudiment = applyFilter ? filteredRudiments[indexPath.row] : rudiments[indexPath.row]
-            cell.rudiment = rudiment
+            cell.rudimentNameLabel.text = rudiment.name
+            cell.rudimentStickingLabel.text = rudiment.sticking
             return cell
         }
         fatalError("Could not create RudimentCell")

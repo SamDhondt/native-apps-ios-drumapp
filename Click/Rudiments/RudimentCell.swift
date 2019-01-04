@@ -13,14 +13,6 @@ class RudimentCell: UITableViewCell {
     @IBOutlet weak var rudimentNameLabel: UILabel!
     @IBOutlet weak var rudimentStickingLabel: UILabel!
     
-    var rudiment: Rudiment! {
-        didSet {
-            rudimentNameLabel.text = rudiment.name
-            rudimentStickingLabel.text = rudiment.sticking
-        }
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
