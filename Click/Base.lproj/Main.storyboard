@@ -82,27 +82,62 @@
             </objects>
             <point key="canvasLocation" x="1032.8" y="-510.49475262368821"/>
         </scene>
-        <!--View Controller-->
+        <!--Rudiments Detail View Controller-->
         <scene sceneID="eUX-f0-1Lf">
             <objects>
-                <viewController id="ylt-10-YcA" sceneMemberID="viewController">
+                <viewController id="ylt-10-YcA" customClass="RudimentsDetailViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yhA-iY-yDX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="RLRRLRLL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0F-tA-Cpf">
+                                <rect key="frame" x="10" y="119" width="349" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Paradiddle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36q-M5-JL6">
+                                <rect key="frame" x="10" y="82" width="349" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-Ok-MTC">
+                                <rect key="frame" x="0.0" y="147.5" width="375" height="470.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D0O-ix-NtU" firstAttribute="trailing" secondItem="36q-M5-JL6" secondAttribute="trailing" constant="16" id="0Ik-Fg-S4Y"/>
+                            <constraint firstItem="D0O-ix-NtU" firstAttribute="bottom" secondItem="lDb-Ok-MTC" secondAttribute="bottom" id="0zg-TE-5OY"/>
+                            <constraint firstItem="D0O-ix-NtU" firstAttribute="trailing" secondItem="lDb-Ok-MTC" secondAttribute="trailing" id="1cW-cM-Ii7"/>
+                            <constraint firstItem="D0O-ix-NtU" firstAttribute="trailing" secondItem="f0F-tA-Cpf" secondAttribute="trailing" constant="16" id="2td-OD-5zm"/>
+                            <constraint firstItem="36q-M5-JL6" firstAttribute="top" secondItem="D0O-ix-NtU" secondAttribute="top" constant="18" id="6Pd-Hg-jdd"/>
+                            <constraint firstItem="f0F-tA-Cpf" firstAttribute="top" secondItem="36q-M5-JL6" secondAttribute="bottom" constant="8" id="CPb-Bp-5vM"/>
+                            <constraint firstItem="36q-M5-JL6" firstAttribute="leading" secondItem="D0O-ix-NtU" secondAttribute="leading" constant="10" id="DxN-ac-pq2"/>
+                            <constraint firstItem="f0F-tA-Cpf" firstAttribute="leading" secondItem="D0O-ix-NtU" secondAttribute="leading" constant="10" id="S73-2O-5p7"/>
+                            <constraint firstItem="lDb-Ok-MTC" firstAttribute="top" secondItem="f0F-tA-Cpf" secondAttribute="bottom" constant="8" id="Tpj-36-A7W"/>
+                            <constraint firstItem="lDb-Ok-MTC" firstAttribute="leading" secondItem="D0O-ix-NtU" secondAttribute="leading" id="jxO-de-rsW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="D0O-ix-NtU"/>
                     </view>
+                    <connections>
+                        <outlet property="commentsTableView" destination="lDb-Ok-MTC" id="bPq-mc-beQ"/>
+                        <outlet property="nameLabel" destination="36q-M5-JL6" id="rTD-FU-CdS"/>
+                        <outlet property="stickingLabel" destination="f0F-tA-Cpf" id="KJi-8F-sZj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VG7-bT-xEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="1178"/>
+            <point key="canvasLocation" x="1696.8" y="1177.961019490255"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qcA-ij-Zj8">
             <objects>
                 <navigationController id="shQ-Fe-WLh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kzR-Oi-Z82">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -139,11 +174,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter rudiments" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-9a-NaO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATu-7L-cfl">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="498"/>
+                                        <rect key="frame" x="0.0" y="299" width="375" height="255"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RudimentCell" textLabel="MxG-8j-lIB" detailTextLabel="FOi-ZP-ki8" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="Fk8-rj-R4d" customClass="RudimentCell" customModule="Click" customModuleProvider="target">
