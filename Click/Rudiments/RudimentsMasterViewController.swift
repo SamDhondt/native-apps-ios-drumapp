@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class RudimentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class RudimentMasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private var rudiments = [Rudiment]()
     private var filteredRudiments = [Rudiment]()
     private var notificationToken: NotificationToken?
@@ -20,6 +20,8 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = true
         
         rudiments.append(contentsOf: [
             Rudiment("Paradiddle", "RLRRLRLL"),
@@ -40,6 +42,10 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
 //            self.rudiments.append(contentsOf: realm.objects(Metronome.self))
 //        })
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
