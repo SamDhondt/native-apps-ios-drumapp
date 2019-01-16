@@ -12,5 +12,8 @@ class Comment {
     var author: String = ""
     var message: String = ""
     
-    init() {}
+    init(_ author: String, _ message: String) {
+        self.author = author
+        self.message = message
+    }
 }
