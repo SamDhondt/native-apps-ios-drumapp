@@ -14,28 +14,27 @@ class RudimentsDetailViewController: UIViewController {
     @IBOutlet weak var stickingLabel: UILabel!
     @IBOutlet weak var commentsTableView: UITableView!
     
-    var rudiment: Rudiment! {
-        didSet {
-            nameLabel.text = rudiment.name
-            stickingLabel.text = rudiment.sticking
-        }
-    }
+    var rudiment: Rudiment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        rudiment = Rudiment("Paradiddle", "RLRRLRLL")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateUI() {
+        loadViewIfNeeded()
+        nameLabel.text = rudiment?.name
+        nameLabel.setNeedsDisplay()
+        stickingLabel.text = rudiment?.sticking
+        stickingLabel.setNeedsDisplay()
     }
-    */
 
+}
+
+extension RudimentsDetailViewController: RudimentSelectionDelegate {
+    func onRudimentSelected(_ rudiment: Rudiment) {
+        self.rudiment = rudiment
+        updateUI()
+    }
+    
+    
 }

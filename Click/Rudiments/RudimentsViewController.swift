@@ -9,11 +9,17 @@
 import UIKit
 import RealmSwift
 
-class RudimentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    private var rudiments = [Rudiment]()
+class RudimentsViewController: UIViewController {
+    private(set) var rudiments = [Rudiment]()
     private var filteredRudiments = [Rudiment]()
-    private var notificationToken: NotificationToken?
     private var applyFilter = false
+    
+    private var notificationToken: NotificationToken?
+    
+    var detailCollapsed = true
+
+    var rudimentSelectionDelegate: RudimentSelectionDelegate?
+
 
     @IBOutlet weak var rudimentTableView: UITableView!
     @IBOutlet weak var rudimentSearchBar: UISearchBar!
@@ -34,6 +40,13 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
         rudimentTableView.dataSource = self
         rudimentSearchBar.delegate = self
         
+        guard let rightNav = splitViewController?.viewControllers.last as? UINavigationController,
+            let detail = rightNav.topViewController as? RudimentsDetailViewController
+        else { fatalError("Could not find DetailViewController") }
+        
+        rudimentSelectionDelegate = detail
+        detail.rudiment = rudiments.first
+        
 //        let realm = try! Realm()
 //        notificationToken = realm.observe({ notification, realm in
 //            self.rudiments.removeAll()
@@ -42,6 +55,10 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+}
+
+// MARK: TableView
+extension RudimentsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -56,13 +73,24 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = rudimentTableView.dequeueReusableCell(withIdentifier: "RudimentCell", for: indexPath) as? RudimentCell {
             let rudiment = applyFilter ? filteredRudiments[indexPath.row] : rudiments[indexPath.row]
-            cell.rudimentNameLabel.text = rudiment.name
-            cell.rudimentStickingLabel.text = rudiment.sticking
+            cell.rudiment = rudiment
             return cell
         }
         fatalError("Could not create RudimentCell")
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let rudimentSelected = rudiments[indexPath.row]
+        rudimentSelectionDelegate?.onRudimentSelected(rudimentSelected)
+        detailCollapsed = false
+        if let detailViewController = rudimentSelectionDelegate as? RudimentsDetailViewController {
+            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        }
+    }
+}
+
+// MARK: UISearchBar
+extension RudimentsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.isEmpty) {
             applyFilter = false
@@ -74,5 +102,8 @@ class RudimentsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         rudimentTableView.reloadData()
     }
+}
 
+protocol RudimentSelectionDelegate: class {
+    func onRudimentSelected(_ rudiment: Rudiment)
 }

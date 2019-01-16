@@ -90,20 +90,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="RLRRLRLL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0F-tA-Cpf">
-                                <rect key="frame" x="10" y="119" width="349" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0F-tA-Cpf">
+                                <rect key="frame" x="10" y="90" width="349" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Paradiddle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36q-M5-JL6">
-                                <rect key="frame" x="10" y="82" width="349" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36q-M5-JL6">
+                                <rect key="frame" x="10" y="82" width="349" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-Ok-MTC">
-                                <rect key="frame" x="0.0" y="147.5" width="375" height="470.5"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" textLabel="ddU-HQ-PZk" detailTextLabel="c0q-qr-GbB" style="IBUITableViewCellStyleSubtitle" id="Agg-n3-n7o" customClass="CommentCell" customModule="Click" customModuleProvider="target">
@@ -152,6 +152,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0O-ix-NtU"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QQQ-Oe-Qd0"/>
                     <connections>
                         <outlet property="commentsTableView" destination="lDb-Ok-MTC" id="bPq-mc-beQ"/>
                         <outlet property="nameLabel" destination="36q-M5-JL6" id="rTD-FU-CdS"/>
@@ -160,7 +161,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VG7-bT-xEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696.8" y="1177.961019490255"/>
+            <point key="canvasLocation" x="2834" y="1200"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="msa-pz-Red">
+            <objects>
+                <navigationController id="dke-s0-w1D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h1H-vM-a9n">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ylt-10-YcA" kind="relationship" relationship="rootViewController" id="rM7-fx-ChA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPD-OZ-KYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="1200"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qcA-ij-Zj8">
@@ -178,14 +195,14 @@
             </objects>
             <point key="canvasLocation" x="1697" y="406"/>
         </scene>
-        <!--Item-->
+        <!--Rudiments-->
         <scene sceneID="kgY-Pk-Hbp">
             <objects>
                 <splitViewController id="NrY-bV-4SF" customClass="RudimentsSplitViewController" customModule="Click" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="h82-Cg-IpT"/>
+                    <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="h82-Cg-IpT"/>
                     <connections>
                         <segue destination="shQ-Fe-WLh" kind="relationship" relationship="masterViewController" id="ble-xH-7Sd"/>
-                        <segue destination="ylt-10-YcA" kind="relationship" relationship="detailViewController" id="c4O-UP-249"/>
+                        <segue destination="dke-s0-w1D" kind="relationship" relationship="detailViewController" id="CZ9-e4-9hK"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZM-hG-5Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,12 +270,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kH1-ph-98O"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rudiments" image="Rudiments" selectedImage="Rudiments" id="BET-iT-fPd"/>
-                    <navigationItem key="navigationItem" id="EPL-g5-Jiw"/>
+                    <navigationItem key="navigationItem" title="Rudiments" id="EPL-g5-Jiw"/>
                     <connections>
                         <outlet property="rudimentSearchBar" destination="LAR-9a-NaO" id="qSo-Fz-V9p"/>
                         <outlet property="rudimentTableView" destination="ATu-7L-cfl" id="OJ2-8b-ZjV"/>
-                        <segue destination="ylt-10-YcA" kind="showDetail" identifier="showDetail" id="Hc9-2H-CC9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4Y-pI-L27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +304,4 @@
         <image name="Metronome" width="30" height="30"/>
         <image name="Rudiments" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Hc9-2H-CC9"/>
-    </inferredMetricsTieBreakers>
 </document>

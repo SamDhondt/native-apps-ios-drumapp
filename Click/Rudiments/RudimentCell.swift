@@ -12,16 +12,23 @@ class RudimentCell: UITableViewCell {
 
     @IBOutlet weak var rudimentNameLabel: UILabel!
     @IBOutlet weak var rudimentStickingLabel: UILabel!
+    var rudiment: Rudiment! {
+        didSet {
+            updateUI()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    private func updateUI() {
+        rudimentNameLabel.text = rudiment.name
+        rudimentStickingLabel.text = rudiment.sticking
     }
 
 }

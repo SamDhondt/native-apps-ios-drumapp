@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//
+//        guard let tabController = window?.rootViewController as? UITabBarController,
+//            let splitView = tabController.viewControllers?.last as? UISplitViewController,
+//            let navigation = splitView.viewControllers.first as? UINavigationController,
+//            let navigation2 = splitView.viewControllers.last as? UINavigationController,
+//            let master = navigation.viewControllers.first as? RudimentsViewController,
+//            let detail = navigation2.viewControllers.first as? RudimentsDetailViewController
+//        else { fatalError() }
+//
+//
+//        master.rudimentSelectionDelegate = detail
+//        detail.rudiment = master.rudiments.first
+//
         return true
     }
 
