@@ -22,9 +22,9 @@ class RudimentsDetailViewController: UIViewController {
         for _ in 0..<5 {
             comments.append(Comment("testAuthor", "This is a test message"))
         }
-        
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
+        updateUI()
     }
     
     private func updateUI() {
@@ -36,15 +36,6 @@ class RudimentsDetailViewController: UIViewController {
 
 }
 
-// Mark: SelectionDelegate
-extension RudimentsDetailViewController: RudimentSelectionDelegate {
-    func onRudimentSelected(_ rudiment: Rudiment) {
-        self.rudiment = rudiment
-        updateUI()
-    }
-}
-
-// Mark: TableView
 extension RudimentsDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

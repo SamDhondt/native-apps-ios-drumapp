@@ -15,9 +15,13 @@ class RudimentsSplitViewController: UISplitViewController, UISplitViewController
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        guard let navigationController = primaryViewController as? UINavigationController,
-            let master = navigationController.topViewController as? RudimentsViewController
+        guard let masterNavigationController = primaryViewController as? UINavigationController,
+            let master = masterNavigationController.topViewController as? RudimentsViewController,
+            let detailNavigationController = secondaryViewController as? UINavigationController,
+            let detail = detailNavigationController.topViewController as? RudimentsDetailViewController
         else { return true }
+        
+        detail.rudiment = master.rudiments.first
         
         return master.detailCollapsed
     }

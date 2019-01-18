@@ -18,9 +18,6 @@ class RudimentsViewController: UIViewController {
     
     var detailCollapsed = true
 
-    var rudimentSelectionDelegate: RudimentSelectionDelegate?
-
-
     @IBOutlet weak var rudimentTableView: UITableView!
     @IBOutlet weak var rudimentSearchBar: UISearchBar!
     
@@ -38,26 +35,23 @@ class RudimentsViewController: UIViewController {
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
+        
         rudimentSearchBar.delegate = self
         
-        guard let rightNav = splitViewController?.viewControllers.last as? UINavigationController,
-            let detail = rightNav.topViewController as? RudimentsDetailViewController
-        else { fatalError("Could not find DetailViewController") }
-        
-        rudimentSelectionDelegate = detail
-        detail.rudiment = rudiments.first
-        
-//        let realm = try! Realm()
-//        notificationToken = realm.observe({ notification, realm in
-//            self.rudiments.removeAll()
-//            self.rudiments.append(contentsOf: realm.objects(Metronome.self))
-//        })
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let detailNav = segue.destination as? UINavigationController,
+                let detail = detailNav.topViewController as? RudimentsDetailViewController
+                else { fatalError("Could not find detail controller") }
+            detail.rudiment = rudiments[rudimentTableView.indexPathForSelectedRow!.row]
+        }
     }
     
 }
 
-// MARK: TableView
+// MARK: Rudiments TableView
 extension RudimentsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -78,18 +72,9 @@ extension RudimentsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         fatalError("Could not create RudimentCell")
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rudimentSelected = rudiments[indexPath.row]
-        rudimentSelectionDelegate?.onRudimentSelected(rudimentSelected)
-        detailCollapsed = false
-        if let detailViewController = rudimentSelectionDelegate as? RudimentsDetailViewController {
-            splitViewController?.showDetailViewController(detailViewController, sender: nil)
-        }
-    }
 }
 
-// MARK: UISearchBar
+// MARK: SearchBar
 extension RudimentsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.isEmpty) {
@@ -102,8 +87,4 @@ extension RudimentsViewController: UISearchBarDelegate {
         }
         rudimentTableView.reloadData()
     }
-}
-
-protocol RudimentSelectionDelegate: class {
-    func onRudimentSelected(_ rudiment: Rudiment)
 }

@@ -254,6 +254,7 @@
                                                 <connections>
                                                     <outlet property="rudimentNameLabel" destination="MxG-8j-lIB" id="DnM-RO-2ZI"/>
                                                     <outlet property="rudimentStickingLabel" destination="FOi-ZP-ki8" id="b5T-Q3-2yx"/>
+                                                    <segue destination="dke-s0-w1D" kind="showDetail" identifier="showDetail" id="Y8I-hK-W8k"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -304,4 +305,7 @@
         <image name="Metronome" width="30" height="30"/>
         <image name="Rudiments" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y8I-hK-W8k"/>
+    </inferredMetricsTieBreakers>
 </document>
