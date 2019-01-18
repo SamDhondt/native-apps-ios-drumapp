@@ -9,20 +9,19 @@
 import UIKit
 import RealmSwift
 
-class RudimentsViewController: UIViewController {
-    private(set) var rudiments = [Rudiment]()
+class RudimentMasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    private var rudiments = [Rudiment]()
     private var filteredRudiments = [Rudiment]()
-    private var applyFilter = false
-    
     private var notificationToken: NotificationToken?
-    
-    var detailCollapsed = true
+    private var applyFilter = false
 
     @IBOutlet weak var rudimentTableView: UITableView!
     @IBOutlet weak var rudimentSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = true
         
         rudiments.append(contentsOf: [
             Rudiment("Paradiddle", "RLRRLRLL"),
@@ -35,24 +34,20 @@ class RudimentsViewController: UIViewController {
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
-        
         rudimentSearchBar.delegate = self
         
+//        let realm = try! Realm()
+//        notificationToken = realm.observe({ notification, realm in
+//            self.rudiments.removeAll()
+//            self.rudiments.append(contentsOf: realm.objects(Metronome.self))
+//        })
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            guard let detailNav = segue.destination as? UINavigationController,
-                let detail = detailNav.topViewController as? RudimentsDetailViewController
-                else { fatalError("Could not find detail controller") }
-            detail.rudiment = rudiments[rudimentTableView.indexPathForSelectedRow!.row]
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
-}
-
-// MARK: Rudiments TableView
-extension RudimentsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -72,10 +67,7 @@ extension RudimentsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         fatalError("Could not create RudimentCell")
     }
-}
-
-// MARK: SearchBar
-extension RudimentsViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.isEmpty) {
             applyFilter = false
@@ -87,4 +79,5 @@ extension RudimentsViewController: UISearchBarDelegate {
         }
         rudimentTableView.reloadData()
     }
+
 }
