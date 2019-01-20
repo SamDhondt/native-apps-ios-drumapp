@@ -29,13 +29,13 @@ class RudimentsViewController: UIViewController {
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
+        
         // hides excess empty rows
         rudimentTableView.tableFooterView = UIView(frame: CGRect.zero)
         rudimentTableView.backgroundColor = UIColor.clear
         
         rudimentSearchBar.delegate = self
         
-        // MARK: observe Realm
         let realm = try! Realm()
         notificationToken = realm.observe({ notification, realm in
             self.rudiments.removeAll()
@@ -43,19 +43,7 @@ class RudimentsViewController: UIViewController {
             self.rudimentTableView.reloadData()
         })
         
-        // MARK: API Call
         retrieveRudimentsFromApi()
-  
-    }
-    
-    // MARK: Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            guard let detailNav = segue.destination as? UINavigationController,
-                let detail = detailNav.topViewController as? RudimentsDetailViewController
-                else { fatalError("Could not find detail controller") }
-            detail.rudiment = rudiments[rudimentTableView.indexPathForSelectedRow!.row]
-        }
     }
     
     private func retrieveRudimentsFromApi() {
@@ -86,6 +74,16 @@ class RudimentsViewController: UIViewController {
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let detailNav = segue.destination as? UINavigationController,
+                let detail = detailNav.topViewController as? RudimentsDetailViewController
+                else { fatalError("Could not find detail controller") }
+            detail.rudiment = rudiments[rudimentTableView.indexPathForSelectedRow!.row]
+        }
     }
     
 }

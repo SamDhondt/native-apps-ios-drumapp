@@ -100,7 +100,7 @@ class MetronomeViewController: UIViewController, OnTickListener {
             }
             
             // setup audioservices
-            // source: https://stackoverflow.com/questions/24043904/creating-and-playing-a-sound-in-swift#25048225
+            // SOURCE: https://stackoverflow.com/questions/24043904/creating-and-playing-a-sound-in-swift#25048225
             // for: Creating and playing a sound in Swift
             if let soundURL = Bundle.main.url(
                 forResource: "Sounds/\(soundType.rawValue)",

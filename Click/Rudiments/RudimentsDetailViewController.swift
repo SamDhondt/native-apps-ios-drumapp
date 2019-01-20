@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 
+/// Presents the detail of a Rudiment showing the name, sticking and comments
 class RudimentsDetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +25,7 @@ class RudimentsDetailViewController: UIViewController {
         
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
+        
         // hides excess empty rows
         commentsTableView.tableFooterView = UIView(frame: CGRect.zero)
         commentsTableView.backgroundColor = UIColor.clear
