@@ -221,9 +221,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Filter rudiments" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-9a-NaO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ReA-es-02b">
+                                        <rect key="frame" x="0.0" y="279" width="375" height="20"/>
+                                    </activityIndicatorView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATu-7L-cfl">
                                         <rect key="frame" x="0.0" y="299" width="375" height="255"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,6 +276,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rudiments" id="EPL-g5-Jiw"/>
                     <connections>
+                        <outlet property="progress" destination="ReA-es-02b" id="kjE-IZ-Ng2"/>
                         <outlet property="rudimentSearchBar" destination="LAR-9a-NaO" id="qSo-Fz-V9p"/>
                         <outlet property="rudimentTableView" destination="ATu-7L-cfl" id="OJ2-8b-ZjV"/>
                     </connections>
