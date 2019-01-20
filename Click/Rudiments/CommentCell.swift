@@ -20,6 +20,8 @@ class CommentCell: UITableViewCell {
     }
     
     private func updateUI() {
+        // wraps text
+        messageLabel.numberOfLines = 0
         
         authorLabel.text = comment?.author
         messageLabel.text = comment?.message
