@@ -38,17 +38,33 @@ class RudimentsDetailViewController: UIViewController {
     }
     
     private func retrieveCommentsFromApi() {
-        progress.startAnimating()
         commentsTableView.isHidden = true
         if let rud = rudiment {
-            _ = DrumAPI.retrieveComments(forRudiment: rud).subscribe(onNext: { comments in
-                self.progress.stopAnimating()
-                self.commentsTableView.isHidden = false
-                self.comments.removeAll()
-                self.comments.append(contentsOf: comments)
-                self.commentsTableView.reloadData()
-            })
+            progress.startAnimating()
+            _ = DrumAPI.retrieveComments(forRudiment: rud).timeout(3, scheduler: MainScheduler.instance).subscribe(
+                onNext: { comments in
+                    self.progress.stopAnimating()
+                    self.commentsTableView.isHidden = false
+                    self.comments.removeAll()
+                    self.comments.append(contentsOf: comments)
+                    self.commentsTableView.reloadData()
+                },
+                onError: { error in
+                    self.progress.stopAnimating()
+                    print(error.localizedDescription)
+                    self.showErrorAlert()
+                }
+            )
         }
+    }
+    
+    private func showErrorAlert() {
+        let alertController = UIAlertController(title: "Failed to retrieve comments", message: "Check your internet connection and try again", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+            self.retrieveCommentsFromApi()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 
 }
