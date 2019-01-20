@@ -29,6 +29,9 @@ class RudimentsViewController: UIViewController {
         
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
+        // hides excess empty rows
+        rudimentTableView.tableFooterView = UIView(frame: CGRect.zero)
+        rudimentTableView.backgroundColor = UIColor.clear
         
         rudimentSearchBar.delegate = self
         
@@ -57,7 +60,7 @@ class RudimentsViewController: UIViewController {
     
     private func retrieveRudimentsFromApi() {
         let realm = try! Realm()
-        
+        progress.startAnimating()
         _ = DrumAPI.retrieveRudiments()
             .timeout(5, scheduler: MainScheduler.instance)
             .subscribe(
