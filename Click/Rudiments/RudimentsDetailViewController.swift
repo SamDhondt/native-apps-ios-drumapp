@@ -52,12 +52,18 @@ extension RudimentsDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        return comments.isEmpty ? 1 : comments.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentCell {
-            cell.comment = comments[indexPath.row]
+            
+            if (comments.isEmpty) {
+                cell.messageLabel.text = "No comments yet."
+                cell.authorLabel.text = ""
+            } else {
+                cell.comment = comments[indexPath.row]
+            }
             return cell
         } else {
             fatalError("Could not create CommentCell")
