@@ -31,6 +31,17 @@ class RudimentsDetailViewController: UIViewController {
         loadViewIfNeeded()
         nameLabel.text = rudiment?.name
         stickingLabel.text = rudiment?.sticking
+        retrieveCommentsFromApi()
+    }
+    
+    private func retrieveCommentsFromApi() {
+        if let rud = rudiment {
+            _ = DrumAPI.retrieveComments(forRudiment: rud).subscribe(onNext: { comments in
+                self.comments.removeAll()
+                self.comments.append(contentsOf: comments)
+                self.commentsTableView.reloadData()
+            })
+        }
     }
 
 }

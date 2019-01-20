@@ -44,7 +44,7 @@ enum DrumAPI {
     /// - The created `Observable<[Comment]>`
     static func retrieveComments(forRudiment rudiment: Rudiment) -> Observable<[Comment]> {
         return Observable<[Comment]>.create { observer in
-            let request = AF.request("\(_url)rudiments/\(rudiment.id)").validate().responseJSON { response in
+            let request = AF.request("\(_url)rudiments/\(rudiment.id)/comments").validate().responseJSON { response in
                 switch response.result {
                 case .success:
                     let comments = try! JSONDecoder().decode([Comment].self, from: response.data!)
