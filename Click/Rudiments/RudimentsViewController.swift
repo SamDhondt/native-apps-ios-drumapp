@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import Alamofire
+import RxSwift
 
 class RudimentsViewController: UIViewController {
     private(set) var rudiments = [Rudiment]()
@@ -57,13 +58,31 @@ class RudimentsViewController: UIViewController {
     private func retrieveRudimentsFromApi() {
         let realm = try! Realm()
         
-        _ = DrumAPI.retrieveRudiments().subscribe(onNext: { rudiments in
-            self.progress.stopAnimating()
-            try! realm.write {
-                realm.delete(realm.objects(Rudiment.self))
-                realm.add(rudiments)
-            }
-        })
+        _ = DrumAPI.retrieveRudiments()
+            .timeout(5, scheduler: MainScheduler.instance)
+            .subscribe(
+                onNext: { rudiments in
+                    self.progress.stopAnimating()
+                    try! realm.write {
+                        realm.delete(realm.objects(Rudiment.self))
+                        realm.add(rudiments)
+                    }
+                },
+                onError: { error in
+                    self.progress.stopAnimating()
+                    print(error.localizedDescription)
+                    self.showErrorAlert()
+                }
+            )
+    }
+    
+    private func showErrorAlert() {
+        let alertController = UIAlertController(title: "Failed to retrieve rudiments", message: "Check your internet connection and try again", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+            self.retrieveRudimentsFromApi()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
 }
