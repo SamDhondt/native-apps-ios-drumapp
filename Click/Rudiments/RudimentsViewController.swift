@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Alamofire
 
 class RudimentsViewController: UIViewController {
     private(set) var rudiments = [Rudiment]()
@@ -18,28 +19,32 @@ class RudimentsViewController: UIViewController {
     
     var detailCollapsed = true
 
+    @IBOutlet weak var progress: UIActivityIndicatorView!
     @IBOutlet weak var rudimentTableView: UITableView!
     @IBOutlet weak var rudimentSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rudiments.append(contentsOf: [
-            Rudiment("Paradiddle", "RLRRLRLL"),
-            Rudiment("Single Stroke Roll", "RLRLRLRL"),
-            Rudiment("Double Stroke Roll", "RRLLRRLL"),
-            Rudiment("Paradiddlediddle", "RLRRLL"),
-            Rudiment("Six Stroke Roll", "RLLRRL"),
-            Rudiment("Double paradiddle", "RLRLRRLRLRLL"),
-        ])
-        
         rudimentTableView.delegate = self
         rudimentTableView.dataSource = self
         
         rudimentSearchBar.delegate = self
         
+        // MARK: observe Realm
+        let realm = try! Realm()
+        notificationToken = realm.observe({ notification, realm in
+            self.rudiments.removeAll()
+            self.rudiments.append(contentsOf: realm.objects(Rudiment.self))
+            self.rudimentTableView.reloadData()
+        })
+        
+        // MARK: API Call
+        retrieveRudimentsFromApi()
+  
     }
     
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let detailNav = segue.destination as? UINavigationController,
@@ -47,6 +52,18 @@ class RudimentsViewController: UIViewController {
                 else { fatalError("Could not find detail controller") }
             detail.rudiment = rudiments[rudimentTableView.indexPathForSelectedRow!.row]
         }
+    }
+    
+    private func retrieveRudimentsFromApi() {
+        let realm = try! Realm()
+        
+        _ = DrumAPI.retrieveRudiments().subscribe(onNext: { rudiments in
+            self.progress.stopAnimating()
+            try! realm.write {
+                realm.delete(realm.objects(Rudiment.self))
+                realm.add(rudiments)
+            }
+        })
     }
     
 }
