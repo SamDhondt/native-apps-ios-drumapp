@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Rudiment: Object, Codable {
+    @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var sticking: String = ""
     

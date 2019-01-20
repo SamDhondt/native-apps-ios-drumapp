@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class RudimentsDetailViewController: UIViewController {
 
@@ -19,11 +20,10 @@ class RudimentsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0..<5 {
-            comments.append(Comment("testAuthor", "This is a test message"))
-        }
+        
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
+        
         updateUI()
     }
     
@@ -31,7 +31,6 @@ class RudimentsDetailViewController: UIViewController {
         loadViewIfNeeded()
         nameLabel.text = rudiment?.name
         stickingLabel.text = rudiment?.sticking
-        
     }
 
 }
